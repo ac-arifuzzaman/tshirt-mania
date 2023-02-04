@@ -1,0 +1,13 @@
+.tshirt {
+  border: 1px solid gainsboro;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.tshirt h2,
+h4 {
+  margin: 0;
+}
+.tshirt img {
+  height: 250px;
+}
