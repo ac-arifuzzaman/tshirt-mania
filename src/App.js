@@ -1,30 +1,33 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import "./App.css";
-import Home from "./components/Home/Home";
-import Orders from "./components/Orders/Orders";
-import Main from "./layouts/Main";
+import ReactBootstrap from "./components/ReactBootstrap";
+import app from "./firebase/firebase.init";
+
+const auth = getAuth(app);
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main />,
-      children: [
-        {
-          path: "/",
-          loader: () => fetch("tshirt.json"),
-          element: <Home />,
-        },
-        {
-          path: "/orders",
-          element: <Orders />,
-        },
-      ],
-    },
-  ]);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+  };
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <form onSubmit={handleRegister}>
+        <input type="email" name="email" id="email" placeholder="Your email" />
+        <br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Your password"
+        />
+        <br />
+        <input type="submit" value="Register" />
+      </form>
+      <h1>React Bootstrap</h1>
+      <ReactBootstrap />
     </div>
   );
 }
